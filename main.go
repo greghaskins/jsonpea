@@ -32,7 +32,15 @@ func handleGet(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	w.Write(data)
+	callback := r.URL.Query().Get("callback")
+	if len(callback) > 0 {
+		w.Write([]byte(callback))
+		w.Write([]byte("("))
+		w.Write(data)
+		w.Write([]byte(");"))
+	} else {
+		w.Write(data)
+	}
 }
 
 func fetchBody(url string) ([]byte, error) {
