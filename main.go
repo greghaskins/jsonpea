@@ -1,5 +1,12 @@
 package main
 
+import "net/http"
+
 func main() {
-	println("hello, my name is JSONpea")
+	http.HandleFunc("/", hello)
+	http.ListenAndServe(":7070", nil)
+}
+
+func hello(w http.ResponseWriter, r *http.Request) {
+	w.Write([]byte("hello, my name is JSONpea"))
 }
