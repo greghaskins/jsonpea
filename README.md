@@ -18,13 +18,15 @@ go get github.com/greghaskins/jsonpea
 Start up `jsonpea`:
 
 ```
-~$ $GOPATH/bin/jsonpea
+$ $GOPATH/bin/jsonpea
 Listening on :7070 ...
 ```
 
 Then hit `http://localhost:7070` in another terminal or browser:
 ```
-GET /get?url=http://httpbin.org/get&callback=doSomething
+GET /get?url=http://httpbin.org/get&callback=doSomething HTTP/1.1
+Host: localhost:7070
+
 ```
 
 ```
